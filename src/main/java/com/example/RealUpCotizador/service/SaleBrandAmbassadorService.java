@@ -24,6 +24,7 @@ public class SaleBrandAmbassadorService {
         saleBrandAmbassador.setClient(saleBrandAmbassadorDTO.getClient());
         saleBrandAmbassador.setCampaign_name(saleBrandAmbassadorDTO.getCampaign_name());
         saleBrandAmbassador.setCampaign_objective(saleBrandAmbassadorDTO.getCampaign_objective());
+        saleBrandAmbassador.setBrief_campaign_objective(saleBrandAmbassadorDTO.getBrief_campaign_objective());
         saleBrandAmbassador.setLocation(saleBrandAmbassadorDTO.getLocation());
         saleBrandAmbassador.setCities(saleBrandAmbassadorDTO.getCities());
         saleBrandAmbassador.setAudience_interests(saleBrandAmbassadorDTO.getAudience_interests());
@@ -31,6 +32,9 @@ public class SaleBrandAmbassadorService {
         saleBrandAmbassador.setAudience_ages(saleBrandAmbassadorDTO.getAudience_ages());
         saleBrandAmbassador.setAudience_genders(saleBrandAmbassadorDTO.getAudience_genders());
         saleBrandAmbassador.setContent_type(saleBrandAmbassadorDTO.getContent_type());
+        saleBrandAmbassador.setCreator_gender(saleBrandAmbassadorDTO.getCreator_gender());
+        saleBrandAmbassador.setBrief_video_content(saleBrandAmbassadorDTO.getBrief_video_content());
+        saleBrandAmbassador.setNumber_creators(saleBrandAmbassadorDTO.getNumber_creators());
         saleBrandAmbassador.setDate_publish(saleBrandAmbassadorDTO.getDate_publish());
         saleBrandAmbassador.setMinimum_followers(saleBrandAmbassadorDTO.getMinimum_followers());
 
