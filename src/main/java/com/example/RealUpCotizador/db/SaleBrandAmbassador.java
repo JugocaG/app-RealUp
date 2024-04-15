@@ -22,6 +22,8 @@ public class SaleBrandAmbassador {
 
     private CampaignObjective campaign_objective;
 
+    private String brief_campaign_objective;
+
     private String location;
 
     @ElementCollection
@@ -39,8 +41,15 @@ public class SaleBrandAmbassador {
     @ElementCollection
     private List<String> content_type;
 
+    private String creator_gender;
+
+    private String brief_video_content;
+
     private String date_publish;
 
-    private String minimum_followers;
+    @ElementCollection
+    private List<String> minimum_followers;
+
+    private Integer number_creators;
 
 }

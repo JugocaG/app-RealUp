@@ -4,6 +4,8 @@ import com.example.RealUpCotizador.vo.CampaignObjective;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "sale_crowdposting")
@@ -18,6 +20,9 @@ public class SaleCrowdposting {
     private Integer reach;
 
     private String country;
+
+    @ElementCollection
+    private List<String> cities;
 
     private Integer number_cities;
 

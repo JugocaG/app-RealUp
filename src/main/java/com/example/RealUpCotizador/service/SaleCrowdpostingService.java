@@ -23,7 +23,8 @@ public class SaleCrowdpostingService {
         saleCrowdposting.setName_client(saleCrowdpostingDTO.getName_client());
         saleCrowdposting.setReach(saleCrowdpostingDTO.getReach());
         saleCrowdposting.setCountry(saleCrowdpostingDTO.getCountry());
-        saleCrowdposting.setNumber_cities(saleCrowdpostingDTO.getNumber_cities());
+        saleCrowdposting.setCities(saleCrowdpostingDTO.getCities());
+        saleCrowdposting.setNumber_cities(saleCrowdpostingDTO.getCities().size());
         saleCrowdposting.setPrice(saleCrowdpostingDTO.getPrice());
         saleCrowdposting.setCampaign_objective(saleCrowdpostingDTO.getCampaign_objective());
 

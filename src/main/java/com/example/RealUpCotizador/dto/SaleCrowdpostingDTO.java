@@ -4,6 +4,8 @@ import com.example.RealUpCotizador.vo.CampaignObjective;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Data
 public class SaleCrowdpostingDTO {
@@ -13,6 +15,8 @@ public class SaleCrowdpostingDTO {
     private Integer reach;
 
     private String country;
+
+    private List<String> cities;
 
     private Integer number_cities;
 
