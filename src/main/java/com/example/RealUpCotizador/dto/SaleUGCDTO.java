@@ -21,7 +21,7 @@ public class SaleUGCDTO {
 
     private String brief;
 
-    private String country;
+    private List<String> country;
 
     private List<String> cities;
 
@@ -35,7 +35,7 @@ public class SaleUGCDTO {
 
     private Integer number_creators;
 
-    private CampaignObjective campaign_objective;
+    private List<CampaignObjective> campaign_objective;
 
     private String delivery;
 

@@ -26,7 +26,8 @@ public class SaleUGC {
 
     private String brief;
 
-    private String country;
+    @ElementCollection
+    private List<String> country;
 
     @ElementCollection
     private List<String> cities;
@@ -41,7 +42,8 @@ public class SaleUGC {
 
     private Integer number_creators;
 
-    private CampaignObjective campaign_objective;
+    @ElementCollection
+    private List<CampaignObjective> campaign_objective;
 
     private String delivery;
 
