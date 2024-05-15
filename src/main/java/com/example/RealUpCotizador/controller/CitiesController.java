@@ -1,7 +1,5 @@
 package com.example.RealUpCotizador.controller;
 
-import com.example.RealUpCotizador.db.Cities;
-import com.example.RealUpCotizador.db.CitiesDTO;
 import com.example.RealUpCotizador.db.CitiesRepository;
 import com.example.RealUpCotizador.service.CitiesService;
 import lombok.AllArgsConstructor;
