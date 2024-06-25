@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "archivo")
+@Table(name = "cities")
 public class Cities {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sale_crowdposting_sequence")
