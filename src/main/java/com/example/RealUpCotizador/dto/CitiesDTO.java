@@ -1,4 +1,4 @@
-package com.example.RealUpCotizador.db;
+package com.example.RealUpCotizador.dto;
 
 import lombok.Data;
 
