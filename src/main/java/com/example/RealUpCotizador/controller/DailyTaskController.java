@@ -37,4 +37,10 @@ public class DailyTaskController {
         return dailyTaskService.seeOpTask(dailyTaskDTO);
     }
 
+    @PostMapping(path = "/delete-daily")
+    public String deleteDaily(@RequestBody DailyTaskDTO dailyTaskDTO){
+        dailyTaskService.deleteDailyTask(dailyTaskDTO);
+        return "Se ha eliminado con exito";
+    }
+
 }

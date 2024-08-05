@@ -37,6 +37,7 @@ public class DailyTaskService {
         DailyTask dailyTask = dailyTaskOptional.get();
         dailyTask.setTask(dailyTaskDTO.getTask());
         dailyTask.setComment(dailyTaskDTO.getComment());
+        dailyTask.setTask_completed(dailyTaskDTO.getTask_completed());
         dailyTaskRepository.save(dailyTask);
         return dailyTask;
     }
@@ -44,5 +45,9 @@ public class DailyTaskService {
     public List<DailyTask> seeOpTask(DailyTaskDTO dailyTaskDTO){
         List<DailyTask> dailyTaskList = dailyTaskRepository.findByOp(dailyTaskDTO.getOp());
         return dailyTaskList;
+    }
+
+    public void deleteDailyTask(DailyTaskDTO dailyTaskDTO){
+        dailyTaskRepository.deleteById(dailyTaskDTO.getId());
     }
 }
