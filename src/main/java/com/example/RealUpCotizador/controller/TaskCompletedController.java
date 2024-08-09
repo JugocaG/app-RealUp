@@ -32,4 +32,14 @@ public class TaskCompletedController {
         }
     }
 
+    @PutMapping("update-content-task-id/{idCampaign}")
+    public ResponseEntity<?> updateContentChecklist(@PathVariable Long idCampaign, @RequestBody TaskCompletedDTO taskCompletedDTO) {
+        try {
+            taskCompletedService.updateContentChecklist(idCampaign, taskCompletedDTO);
+            return ResponseEntity.ok().body("Checklist content updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating checklist: " + e.getMessage());
+        }
+    }
+
 }

@@ -76,7 +76,40 @@ public class TaskCompletedService {
         taskCompleted.setTask_17(taskCompletedDTO.getTask_17());
         taskCompleted.setTask_18(taskCompletedDTO.getTask_18());
         taskCompleted.setNumber_task_completed(taskCompletedDTO.getNumber_task_completed());
+
         taskCompletedRepository.save(taskCompleted);
     }
+    public void updateContentChecklist(Long idCampaign, TaskCompletedDTO taskCompletedDTO) {
+        TaskCompleted taskCompleted = taskCompletedRepository.findByIdCampaign(idCampaign);
 
+        taskCompleted.setComment_task_1(taskCompletedDTO.getComment_task_1());
+        taskCompleted.setComment_task_2(taskCompletedDTO.getComment_task_2());
+        taskCompleted.setComment_task_3(taskCompletedDTO.getComment_task_3());
+        taskCompleted.setComment_task_4(taskCompletedDTO.getComment_task_4());
+        taskCompleted.setComment_task_5(taskCompletedDTO.getComment_task_5());
+        taskCompleted.setComment_task_6(taskCompletedDTO.getComment_task_6());
+        taskCompleted.setComment_task_7(taskCompletedDTO.getComment_task_7());
+        taskCompleted.setComment_task_8(taskCompletedDTO.getComment_task_8());
+        taskCompleted.setComment_task_9(taskCompletedDTO.getComment_task_9());
+        taskCompleted.setComment_task_10(taskCompletedDTO.getComment_task_10());
+        taskCompleted.setComment_task_11(taskCompletedDTO.getComment_task_11());
+        taskCompleted.setComment_task_12(taskCompletedDTO.getComment_task_12());
+        taskCompleted.setComment_task_13(taskCompletedDTO.getComment_task_13());
+        taskCompleted.setComment_task_14(taskCompletedDTO.getComment_task_14());
+        taskCompleted.setComment_task_15(taskCompletedDTO.getComment_task_15());
+        taskCompleted.setComment_task_16(taskCompletedDTO.getComment_task_16());
+        taskCompleted.setComment_task_17(taskCompletedDTO.getComment_task_17());
+        taskCompleted.setComment_task_18(taskCompletedDTO.getComment_task_18());
+
+        taskCompleted.setLink_task_2(taskCompletedDTO.getLink_task_2());
+        taskCompleted.setLink_task_4(taskCompletedDTO.getLink_task_4());
+        taskCompleted.setLink_task_5(taskCompletedDTO.getLink_task_5());
+        taskCompleted.setLink_task_7(taskCompletedDTO.getLink_task_7());
+        taskCompleted.setLink_task_9(taskCompletedDTO.getLink_task_9());
+        taskCompleted.setLink_task_16(taskCompletedDTO.getLink_task_16());
+        taskCompleted.setLink_task_18(taskCompletedDTO.getLink_task_18());
+
+        taskCompletedRepository.save(taskCompleted);
+
+    }
 }
