@@ -17,6 +17,7 @@ public class DailyTask {
 
     private String task;
 
+    @Column(columnDefinition = "TEXT")
     private String comment;
 
     private Boolean task_completed;
