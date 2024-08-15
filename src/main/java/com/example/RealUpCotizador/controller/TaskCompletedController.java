@@ -42,4 +42,10 @@ public class TaskCompletedController {
         }
     }
 
+    @GetMapping("number-contents-campaign/{id}")
+    public ResponseEntity<Integer> getNumberOfContentsCampaign(@PathVariable Long id) {
+        Integer numberOfContentsCampaign = taskCompletedService.getNumberOfContentsCampaign(id);
+        return ResponseEntity.ok(numberOfContentsCampaign);
+    }
+
 }

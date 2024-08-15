@@ -6,6 +6,7 @@ import com.example.RealUpCotizador.db.CampaignRepository;
 import com.example.RealUpCotizador.dto.CampaignDTO;
 import com.example.RealUpCotizador.vo.CampaignState;
 import com.example.RealUpCotizador.vo.CampaignType;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -76,5 +77,10 @@ public class CampaignService {
         }
     }
 
+    public Integer getNumberOfContents(Long campaignId) {
+        return campaignRepository.findById(campaignId)
+                .map(Campaign::getNumber_contents)
+                .orElseThrow(() -> new EntityNotFoundException("Campaign not found with id: " + campaignId));
+    }
 
 }

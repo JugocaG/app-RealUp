@@ -55,4 +55,10 @@ public class CampaignController {
         }
     }
 
+    @GetMapping("number-contents/{id}")
+    public ResponseEntity<Integer> getNumberOfContents(@PathVariable Long id) {
+        Integer numberContents = campaignService.getNumberOfContents(id);
+        return ResponseEntity.ok(numberContents);
+    }
+
 }

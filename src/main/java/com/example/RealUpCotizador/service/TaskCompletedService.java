@@ -5,6 +5,7 @@ import com.example.RealUpCotizador.db.CampaignRepository;
 import com.example.RealUpCotizador.db.TaskCompleted;
 import com.example.RealUpCotizador.db.TaskCompletedRepository;
 import com.example.RealUpCotizador.dto.TaskCompletedDTO;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class TaskCompletedService {
         taskCompleted.setTask_16(false);
         taskCompleted.setTask_17(false);
         taskCompleted.setTask_18(false);
-
+        taskCompleted.setContent_completed(0);
         taskCompletedRepository.save(taskCompleted);
         return taskCompleted;
     }
@@ -109,7 +110,22 @@ public class TaskCompletedService {
         taskCompleted.setLink_task_16(taskCompletedDTO.getLink_task_16());
         taskCompleted.setLink_task_18(taskCompletedDTO.getLink_task_18());
 
+        taskCompleted.setContent_completed(taskCompletedDTO.getContent_completed());
+
         taskCompletedRepository.save(taskCompleted);
 
+        Optional<Campaign> campaignOptional = campaignRepository.findById(idCampaign);
+
+        Campaign campaign = campaignOptional.get();
+        campaign.setNumber_contents_done(taskCompletedDTO.getContent_completed());
+        campaignRepository.save(campaign);
+
+    }
+
+    public Integer getNumberOfContentsCampaign(Long checkListId) {
+
+        return taskCompletedRepository.findById(checkListId)
+                .map(TaskCompleted::getContent_completed)
+                .orElseThrow(() -> new EntityNotFoundException("Campaign not found with id: " + checkListId));
     }
 }

@@ -96,4 +96,5 @@ public class TaskCompletedDTO {
 
     private Integer number_task_completed;
 
+    private Integer content_completed;
 }

@@ -33,6 +33,8 @@ public class Campaign {
 
     private Integer number_creators;
 
+    private Integer number_contents_done;
+
     private CampaignState campaign_state;
 
     private Double budget;

@@ -121,4 +121,6 @@ public class TaskCompleted {
 
     private Integer number_task_completed;
 
+    private Integer content_completed;
+
 }
