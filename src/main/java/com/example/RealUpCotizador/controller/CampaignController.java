@@ -30,6 +30,13 @@ public class CampaignController {
         return "Campaign added without error";
     }
 
+    @PutMapping(path = "update-campaign")
+    public String updateCampaign(@RequestBody CampaignDTO campaignDTO){
+        campaignService.updateCampaign(campaignDTO);
+
+        return "Campaign update successfully";
+    }
+
     @GetMapping("preparation")
     public List<Campaign> getCampaignsInPreparation() {
         return campaignService.getCampaignsInPreparation();

@@ -46,6 +46,23 @@ public class CampaignService {
         return campaign;
 
     }
+
+    public void updateCampaign(CampaignDTO campaignDTO){
+        Optional<Campaign> campaignOptional = campaignRepository.findById(campaignDTO.getId());
+        Campaign campaign = campaignOptional.get();
+        campaign.setName(campaignDTO.getName());
+        campaign.setFinal_date(campaignDTO.getFinal_date());
+        campaign.setName_op(campaignDTO.getName_op());
+        campaign.setNumber_contents(campaignDTO.getNumber_contents());
+        campaign.setNumber_creators(campaignDTO.getNumber_creators());
+        campaign.setBudget(campaignDTO.getBudget());
+        campaign.setCampaign_type(campaignDTO.getCampaign_type());
+        campaign.setCountry(campaignDTO.getCountry());
+        campaign.setPr(campaignDTO.getPr());
+
+        campaignRepository.save(campaign);
+
+    }
     public List<Campaign> getCampaignsInPreparation() {
         return campaignRepository.findCampaignsByState(CampaignState.PREPARATION);
     }
@@ -82,5 +99,6 @@ public class CampaignService {
                 .map(Campaign::getNumber_contents)
                 .orElseThrow(() -> new EntityNotFoundException("Campaign not found with id: " + campaignId));
     }
+
 
 }
