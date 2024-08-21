@@ -35,16 +35,22 @@ public class WeeklyWorkloadService {
         weeklyWorkload.setContents_pr_daniela(0);
         weeklyWorkload.setCampaign_preparation_daniela(0);
         weeklyWorkload.setCampaign_active_daniela(0);
+        weeklyWorkload.setProfiles_no_pr_daniela(0);
+        weeklyWorkload.setProfiles_pr_daniela(0);
 
         weeklyWorkload.setContents_no_pr_estefany(0);
         weeklyWorkload.setContents_pr_estefany(0);
         weeklyWorkload.setCampaign_preparation_estefany(0);
         weeklyWorkload.setCampaign_active_estefany(0);
+        weeklyWorkload.setProfiles_no_pr_estefany(0);
+        weeklyWorkload.setProfiles_pr_estefany(0);
 
         weeklyWorkload.setContents_no_pr_luisa(0);
         weeklyWorkload.setContents_pr_luisa(0);
         weeklyWorkload.setCampaign_preparation_luisa(0);
         weeklyWorkload.setCampaign_active_luisa(0);
+        weeklyWorkload.setProfiles_no_pr_luisa(0);
+        weeklyWorkload.setProfiles_pr_luisa(0);
 
         weeklyWorkloadRepository.save(weeklyWorkload);
     }
@@ -58,16 +64,22 @@ public class WeeklyWorkloadService {
         weeklyWorkload.setContents_pr_daniela(weeklyWorkloadDTO.getContents_pr_daniela());
         weeklyWorkload.setCampaign_preparation_daniela(weeklyWorkloadDTO.getCampaign_preparation_daniela());
         weeklyWorkload.setCampaign_active_daniela(weeklyWorkloadDTO.getCampaign_active_daniela());
+        weeklyWorkload.setProfiles_no_pr_daniela(weeklyWorkloadDTO.getProfiles_no_pr_daniela());
+        weeklyWorkload.setProfiles_pr_daniela(weeklyWorkloadDTO.getProfiles_pr_daniela());
 
         weeklyWorkload.setContents_no_pr_estefany(weeklyWorkloadDTO.getContents_no_pr_estefany());
         weeklyWorkload.setContents_pr_estefany(weeklyWorkloadDTO.getContents_pr_estefany());
         weeklyWorkload.setCampaign_preparation_estefany(weeklyWorkloadDTO.getCampaign_preparation_estefany());
         weeklyWorkload.setCampaign_active_estefany(weeklyWorkloadDTO.getCampaign_active_estefany());
+        weeklyWorkload.setProfiles_no_pr_estefany(weeklyWorkloadDTO.getProfiles_no_pr_estefany());
+        weeklyWorkload.setProfiles_pr_estefany(weeklyWorkloadDTO.getProfiles_pr_estefany());
 
         weeklyWorkload.setContents_no_pr_luisa(weeklyWorkloadDTO.getContents_no_pr_luisa());
         weeklyWorkload.setContents_pr_luisa(weeklyWorkloadDTO.getContents_pr_luisa());
         weeklyWorkload.setCampaign_preparation_luisa(weeklyWorkloadDTO.getCampaign_preparation_luisa());
         weeklyWorkload.setCampaign_active_luisa(weeklyWorkloadDTO.getCampaign_active_luisa());
+        weeklyWorkload.setProfiles_no_pr_luisa(weeklyWorkloadDTO.getProfiles_no_pr_luisa());
+        weeklyWorkload.setProfiles_pr_luisa(weeklyWorkloadDTO.getProfiles_pr_luisa());
 
         weeklyWorkloadRepository.save(weeklyWorkload);
     }

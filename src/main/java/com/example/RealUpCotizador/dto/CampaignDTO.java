@@ -36,4 +36,7 @@ public class CampaignDTO {
 
     private Boolean pr;
 
+    private String image_url;
+
+
 }

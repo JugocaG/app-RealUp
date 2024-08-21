@@ -44,5 +44,8 @@ public class Campaign {
     private String country;
 
     private Boolean pr;
+
+    @Column(columnDefinition = "TEXT")
+    private String image_url;
     
 }

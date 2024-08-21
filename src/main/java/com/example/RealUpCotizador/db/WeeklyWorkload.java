@@ -21,6 +21,10 @@ public class WeeklyWorkload {
 
     private Integer campaign_active_daniela;
 
+    private Integer profiles_no_pr_daniela;
+
+    private Integer profiles_pr_daniela;
+
     private Integer contents_no_pr_estefany;
 
     private Integer contents_pr_estefany;
@@ -29,6 +33,10 @@ public class WeeklyWorkload {
 
     private Integer campaign_active_estefany;
 
+    private Integer profiles_no_pr_estefany;
+
+    private Integer profiles_pr_estefany;
+
     private Integer contents_no_pr_luisa;
 
     private Integer contents_pr_luisa;
@@ -36,6 +44,10 @@ public class WeeklyWorkload {
     private Integer campaign_preparation_luisa;
 
     private Integer campaign_active_luisa;
+
+    private Integer profiles_no_pr_luisa;
+
+    private Integer profiles_pr_luisa;
 
 
 }

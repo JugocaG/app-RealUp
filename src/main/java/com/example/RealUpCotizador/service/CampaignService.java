@@ -41,7 +41,10 @@ public class CampaignService {
         campaign.setCampaign_type(campaignDTO.getCampaign_type());
         campaign.setCountry(campaignDTO.getCountry());
         campaign.setPr(campaignDTO.getPr());
+        campaign.setImage_url(campaignDTO.getImage_url());
+
         taskCompletedService.addTaskCompleted(campaignRepository.getLastValueOfCampaignSequence());
+
         campaignRepository.save(campaign);
         return campaign;
 
@@ -59,6 +62,7 @@ public class CampaignService {
         campaign.setCampaign_type(campaignDTO.getCampaign_type());
         campaign.setCountry(campaignDTO.getCountry());
         campaign.setPr(campaignDTO.getPr());
+        campaign.setImage_url(campaignDTO.getImage_url());
 
         campaignRepository.save(campaign);
 
