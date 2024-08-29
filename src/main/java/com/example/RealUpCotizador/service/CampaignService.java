@@ -30,13 +30,13 @@ public class CampaignService {
         Campaign campaign = new Campaign();
 
         campaign.setName(campaignDTO.getName());
-        campaign.setInitial_date(new Date());
+        campaign.setInitial_date(campaignDTO.getInitial_date());
         campaign.setFinal_date(campaignDTO.getFinal_date());
         campaign.setTask_completed(campaignDTO.getTask_completed());
         campaign.setName_op(campaignDTO.getName_op());
         campaign.setNumber_contents(campaignDTO.getNumber_contents());
         campaign.setNumber_creators(campaignDTO.getNumber_creators());
-        campaign.setCampaign_state(CampaignState.PREPARATION);
+        campaign.setCampaign_state(CampaignState.APPROVAL);
         campaign.setBudget(campaignDTO.getBudget());
         campaign.setCampaign_type(campaignDTO.getCampaign_type());
         campaign.setCountry(campaignDTO.getCountry());
@@ -54,6 +54,7 @@ public class CampaignService {
         Optional<Campaign> campaignOptional = campaignRepository.findById(campaignDTO.getId());
         Campaign campaign = campaignOptional.get();
         campaign.setName(campaignDTO.getName());
+        campaign.setInitial_date(campaignDTO.getInitial_date());
         campaign.setFinal_date(campaignDTO.getFinal_date());
         campaign.setName_op(campaignDTO.getName_op());
         campaign.setNumber_contents(campaignDTO.getNumber_contents());
@@ -85,6 +86,7 @@ public class CampaignService {
         if (campaignOptional.isPresent()) {
             Campaign campaign = campaignOptional.get();
             campaign.setTask_completed(campaignDTO.getTask_completed());
+
             if (campaign.getTask_completed() > 6){
                 campaign.setCampaign_state(CampaignState.EXECUTION);
             }
@@ -104,5 +106,34 @@ public class CampaignService {
                 .orElseThrow(() -> new EntityNotFoundException("Campaign not found with id: " + campaignId));
     }
 
+    public void updateCampaignState(Long campaignId, Integer state){
+        Optional<Campaign> campaignOptional = campaignRepository.findById(campaignId);
+
+        if (campaignOptional.isPresent()) {
+            Campaign campaign = campaignOptional.get();
+
+            if (state == 0){
+                campaign.setCampaign_state(CampaignState.PREPARATION);
+            }
+            if (state == 1){
+                campaign.setCampaign_state(CampaignState.EXECUTION);
+            }
+            if (state == 2){
+                campaign.setCampaign_state(CampaignState.CLOSED);
+            }
+            if (state == 3){
+                campaign.setCampaign_state(CampaignState.ARCHIVED);
+            }
+            if (state == 4){
+                campaign.setCampaign_state(CampaignState.APPROVAL);
+            }
+
+            campaignRepository.save(campaign);
+
+        } else {
+            // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción
+            throw new RuntimeException("Campaign with id " + campaignId + " not found");
+        }
+    }
 
 }

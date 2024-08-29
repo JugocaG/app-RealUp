@@ -13,4 +13,9 @@ public class DailyTaskDTO {
     private String comment;
 
     private Boolean task_completed;
+
+    private Integer order_task;
+
+    private String titleTask;
+
 }

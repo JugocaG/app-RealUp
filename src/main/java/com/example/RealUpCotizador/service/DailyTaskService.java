@@ -4,8 +4,10 @@ import com.example.RealUpCotizador.db.DailyTask;
 import com.example.RealUpCotizador.db.DailyTaskRepository;
 import com.example.RealUpCotizador.dto.DailyTaskDTO;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +28,8 @@ public class DailyTaskService {
         dailyTask.setTask(dailyTaskDTO.getTask());
         dailyTask.setComment(dailyTaskDTO.getComment());
         dailyTask.setTask_completed(false);
+        dailyTask.setTitleTask(dailyTaskDTO.getTitleTask());
+
 
         dailyTaskRepository.save(dailyTask);
         return dailyTask;
@@ -38,6 +42,9 @@ public class DailyTaskService {
         dailyTask.setTask(dailyTaskDTO.getTask());
         dailyTask.setComment(dailyTaskDTO.getComment());
         dailyTask.setTask_completed(dailyTaskDTO.getTask_completed());
+        dailyTask.setOrder_task(dailyTaskDTO.getOrder_task());
+        dailyTask.setTitleTask(dailyTaskDTO.getTitleTask());
+
         dailyTaskRepository.save(dailyTask);
         return dailyTask;
     }
@@ -50,4 +57,20 @@ public class DailyTaskService {
     public void deleteDailyTask(DailyTaskDTO dailyTaskDTO){
         dailyTaskRepository.deleteById(dailyTaskDTO.getId());
     }
+
+    public List<DailyTask> getTitleTask(DailyTaskDTO dailyTaskDTO){
+        List<DailyTask> dailyTaskList = dailyTaskRepository.findByOpAndTitleTask(dailyTaskDTO.getOp(), dailyTaskDTO.getTitleTask());
+        return dailyTaskList;
+    }
+
+    public DailyTask updateDailyTaskTitle(DailyTaskDTO dailyTaskDTO){
+        Optional<DailyTask> dailyTaskOptional = dailyTaskRepository.findById(dailyTaskDTO.getId());
+        DailyTask dailyTask = dailyTaskOptional.get();
+
+        dailyTask.setOrder_task(dailyTaskDTO.getOrder_task());
+
+        dailyTaskRepository.save(dailyTask);
+        return dailyTask;
+    }
+
 }

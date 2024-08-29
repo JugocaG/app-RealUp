@@ -21,4 +21,10 @@ public class DailyTask {
     private String comment;
 
     private Boolean task_completed;
+
+    private Integer order_task;
+
+    @Column(name = "title_task")
+    private String titleTask;
+
 }
