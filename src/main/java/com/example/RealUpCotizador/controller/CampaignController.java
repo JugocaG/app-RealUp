@@ -51,6 +51,14 @@ public class CampaignController {
     public List<Campaign> getCampaignsClosed() {
         return campaignService.getCampaignsClosed();
     }
+    @GetMapping("archived")
+    public List<Campaign> getCampaignsApproval() {
+        return campaignService.getCampaignsArchived();
+    }
+    @GetMapping("proposal")
+    public List<Campaign> getCampaignsProposal() {
+        return campaignService.getCampaignsProposal();
+    }
 
     @PutMapping("update-task-completed/{idCampaign}")
     public ResponseEntity<?> updateChecklist(@PathVariable Long idCampaign, @RequestBody CampaignDTO campaignDTO) {

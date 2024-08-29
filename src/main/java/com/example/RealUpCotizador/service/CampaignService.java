@@ -80,6 +80,15 @@ public class CampaignService {
         return campaignRepository.findCampaignsByState(CampaignState.CLOSED);
     }
 
+    public List<Campaign> getCampaignsProposal() {
+        return campaignRepository.findCampaignsByState(CampaignState.APPROVAL);
+    }
+
+    public List<Campaign> getCampaignsArchived() {
+        return campaignRepository.findCampaignsByState(CampaignState.ARCHIVED);
+    }
+
+
 
     public void updateTaskNumber(CampaignDTO campaignDTO, Long idCampaign) {
         Optional<Campaign> campaignOptional = campaignRepository.findById(idCampaign);
@@ -87,6 +96,9 @@ public class CampaignService {
             Campaign campaign = campaignOptional.get();
             campaign.setTask_completed(campaignDTO.getTask_completed());
 
+            if (campaign.getTask_completed() > 2){
+                campaign.setCampaign_state(CampaignState.PREPARATION);
+            }
             if (campaign.getTask_completed() > 6){
                 campaign.setCampaign_state(CampaignState.EXECUTION);
             }
