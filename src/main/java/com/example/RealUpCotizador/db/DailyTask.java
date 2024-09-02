@@ -4,6 +4,9 @@ package com.example.RealUpCotizador.db;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
+
 @Data
 @Entity
 @Table(name = "daily_task")
@@ -26,5 +29,8 @@ public class DailyTask {
 
     @Column(name = "title_task")
     private String titleTask;
+
+    @Column(name = "date_task")
+    private ZonedDateTime dateTask;
 
 }

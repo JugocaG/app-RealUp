@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +30,8 @@ public class DailyTaskService {
         dailyTask.setComment(dailyTaskDTO.getComment());
         dailyTask.setTask_completed(false);
         dailyTask.setTitleTask(dailyTaskDTO.getTitleTask());
+        ZonedDateTime currentDateTime = ZonedDateTime.now().withHour(18).withMinute(0).withSecond(0).withNano(0);
+        dailyTask.setDateTask(currentDateTime);
 
 
         dailyTaskRepository.save(dailyTask);
@@ -44,6 +47,8 @@ public class DailyTaskService {
         dailyTask.setTask_completed(dailyTaskDTO.getTask_completed());
         dailyTask.setOrder_task(dailyTaskDTO.getOrder_task());
         dailyTask.setTitleTask(dailyTaskDTO.getTitleTask());
+        dailyTask.setDateTask(dailyTaskDTO.getDateTask());
+
 
         dailyTaskRepository.save(dailyTask);
         return dailyTask;
@@ -72,5 +77,7 @@ public class DailyTaskService {
         dailyTaskRepository.save(dailyTask);
         return dailyTask;
     }
+
+
 
 }
