@@ -139,6 +139,9 @@ public class CampaignService {
             if (state == 4){
                 campaign.setCampaign_state(CampaignState.APPROVAL);
             }
+            if (state == 5){
+                campaign.setCampaign_state(CampaignState.DELETED);
+            }
 
             campaignRepository.save(campaign);
 
