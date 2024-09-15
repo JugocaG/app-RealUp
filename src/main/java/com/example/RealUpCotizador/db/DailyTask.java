@@ -30,6 +30,9 @@ public class DailyTask {
     @Column(name = "title_task")
     private String titleTask;
 
+    @Column(name = "name_campaign")
+        private  String nameCampaign;
+
     @Column(name = "date_task")
     private ZonedDateTime dateTask;
 

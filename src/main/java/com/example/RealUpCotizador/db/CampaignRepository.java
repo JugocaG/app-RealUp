@@ -15,5 +15,8 @@ public interface CampaignRepository extends JpaRepository <Campaign, Long> {
     @Query(value = "SELECT next_val FROM campaign_sequence", nativeQuery = true)
     Long getLastValueOfCampaignSequence();
 
+    @Query("SELECT c.name FROM Campaign c WHERE c.name_op = :nameOp")
+    List<String> findCampaignNamesByNameOp(String nameOp);
+
 
 }

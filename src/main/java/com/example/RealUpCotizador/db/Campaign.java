@@ -47,5 +47,10 @@ public class Campaign {
 
     @Column(columnDefinition = "TEXT")
     private String image_url;
-    
+
+    @Column(name = "client")
+    private String client;
+
+    @Column(name = "brand")
+    private String brand;
 }

@@ -2,6 +2,7 @@ package com.example.RealUpCotizador.dto;
 
 import com.example.RealUpCotizador.vo.CampaignState;
 import com.example.RealUpCotizador.vo.CampaignType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,10 @@ public class CampaignDTO {
     private Boolean pr;
 
     private String image_url;
+
+    private String client;
+
+    private String brand;
 
 
 }

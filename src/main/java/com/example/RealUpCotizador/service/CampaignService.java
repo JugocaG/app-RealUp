@@ -151,4 +151,8 @@ public class CampaignService {
         }
     }
 
+    public List<String> getCampaignNamesByNameOp(String nameOp) {
+        return campaignRepository.findCampaignNamesByNameOp(nameOp);
+    }
+
 }

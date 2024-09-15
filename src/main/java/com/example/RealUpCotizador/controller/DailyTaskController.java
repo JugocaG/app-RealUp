@@ -4,6 +4,7 @@ import com.example.RealUpCotizador.db.DailyTask;
 import com.example.RealUpCotizador.dto.DailyTaskDTO;
 import com.example.RealUpCotizador.service.DailyTaskService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,6 +53,12 @@ public class DailyTaskController {
     @PostMapping(path = "/get-title")
     public List<DailyTask> getTitleTask(@RequestBody DailyTaskDTO dailyTaskDTO){
         return dailyTaskService.getTitleTask(dailyTaskDTO);
+    }
+
+    @PutMapping("/update-all")
+    public ResponseEntity<String> updateDailyTasks(@RequestBody List<DailyTaskDTO> dailyTaskDTOs) {
+        dailyTaskService.updateDailyTasks(dailyTaskDTOs);
+        return ResponseEntity.ok("Tareas actualizadas con éxito");
     }
 
 }

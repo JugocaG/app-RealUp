@@ -85,4 +85,11 @@ public class CampaignController {
             return ResponseEntity.status(500).body("Error updating checklist: " + e.getMessage());
         }
     }
+
+    @GetMapping("/get-name-campaign-op/{nameOp}")
+    public List<String> getCampaignNamesByNameOp(@PathVariable String nameOp) {
+        return campaignService.getCampaignNamesByNameOp(nameOp);
+    }
+
+
 }
