@@ -18,6 +18,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class CampaignService {
+    final private String INITIAL_COLOR = "#D0D2D5";
 
     CampaignRepository campaignRepository;
     TaskCompletedService taskCompletedService;
@@ -37,11 +38,8 @@ public class CampaignService {
         campaign.setNumber_contents(campaignDTO.getNumber_contents());
         campaign.setNumber_creators(campaignDTO.getNumber_creators());
         campaign.setCampaign_state(CampaignState.APPROVAL);
-        campaign.setBudget(campaignDTO.getBudget());
-        campaign.setCampaign_type(campaignDTO.getCampaign_type());
-        campaign.setCountry(campaignDTO.getCountry());
-        campaign.setPr(campaignDTO.getPr());
-        campaign.setImage_url(campaignDTO.getImage_url());
+        createUpdateCampaign(campaignDTO, campaign);
+        campaign.setCampaignStateChecklist(INITIAL_COLOR);
 
         taskCompletedService.addTaskCompleted(campaignRepository.getLastValueOfCampaignSequence());
 
@@ -59,15 +57,22 @@ public class CampaignService {
         campaign.setName_op(campaignDTO.getName_op());
         campaign.setNumber_contents(campaignDTO.getNumber_contents());
         campaign.setNumber_creators(campaignDTO.getNumber_creators());
+        createUpdateCampaign(campaignDTO, campaign);
+
+        campaignRepository.save(campaign);
+
+    }
+
+    private void createUpdateCampaign(CampaignDTO campaignDTO, Campaign campaign) {
         campaign.setBudget(campaignDTO.getBudget());
         campaign.setCampaign_type(campaignDTO.getCampaign_type());
         campaign.setCountry(campaignDTO.getCountry());
         campaign.setPr(campaignDTO.getPr());
         campaign.setImage_url(campaignDTO.getImage_url());
-
-        campaignRepository.save(campaign);
-
+        campaign.setBrand(campaignDTO.getBrand());
+        campaign.setClient(campaignDTO.getClient());
     }
+
     public List<Campaign> getCampaignsInPreparation() {
         return campaignRepository.findCampaignsByState(CampaignState.PREPARATION);
     }
@@ -93,23 +98,28 @@ public class CampaignService {
     public void updateTaskNumber(CampaignDTO campaignDTO, Long idCampaign) {
         Optional<Campaign> campaignOptional = campaignRepository.findById(idCampaign);
         if (campaignOptional.isPresent()) {
-            Campaign campaign = campaignOptional.get();
-            campaign.setTask_completed(campaignDTO.getTask_completed());
-
-            if (campaign.getTask_completed() > 2){
-                campaign.setCampaign_state(CampaignState.PREPARATION);
-            }
-            if (campaign.getTask_completed() > 6){
-                campaign.setCampaign_state(CampaignState.EXECUTION);
-            }
-            if (campaign.getTask_completed() > 15){
-                campaign.setCampaign_state(CampaignState.CLOSED);
-            }
+            Campaign campaign = getCampaign(campaignDTO, campaignOptional);
             campaignRepository.save(campaign);
         } else {
             // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción
             throw new RuntimeException("Campaign with id " + idCampaign + " not found");
         }
+    }
+
+    private static Campaign getCampaign(CampaignDTO campaignDTO, Optional<Campaign> campaignOptional) {
+        Campaign campaign = campaignOptional.get();
+        campaign.setTask_completed(campaignDTO.getTask_completed());
+
+        if (campaign.getTask_completed() > 2){
+            campaign.setCampaign_state(CampaignState.PREPARATION);
+        }
+        if (campaign.getTask_completed() > 6){
+            campaign.setCampaign_state(CampaignState.EXECUTION);
+        }
+        if (campaign.getTask_completed() > 15){
+            campaign.setCampaign_state(CampaignState.CLOSED);
+        }
+        return campaign;
     }
 
     public Integer getNumberOfContents(Long campaignId) {
@@ -153,6 +163,18 @@ public class CampaignService {
 
     public List<String> getCampaignNamesByNameOp(String nameOp) {
         return campaignRepository.findCampaignNamesByNameOp(nameOp);
+    }
+    
+    public void updateColorCampaign(CampaignDTO campaignDTO){
+        Optional<Campaign> campaignOptional = campaignRepository.findById(campaignDTO.getId());
+        if (campaignOptional.isPresent()) {
+            Campaign campaign = getCampaign(campaignDTO, campaignOptional);
+            campaign.setCampaignStateChecklist(campaignDTO.getCampaignStateChecklist());
+            campaignRepository.save(campaign);
+        } else {
+            // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción
+            throw new RuntimeException("Campaign with id " + campaignDTO.getId() + " not found");
+        }
     }
 
 }

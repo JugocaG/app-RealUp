@@ -1,10 +1,6 @@
 package com.example.RealUpCotizador.dto;
 
-import com.example.RealUpCotizador.vo.CampaignState;
 import com.example.RealUpCotizador.vo.CampaignType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -43,5 +39,5 @@ public class CampaignDTO {
 
     private String brand;
 
-
+    private String campaignStateChecklist;
 }

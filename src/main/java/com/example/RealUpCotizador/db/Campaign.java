@@ -53,4 +53,7 @@ public class Campaign {
 
     @Column(name = "brand")
     private String brand;
+
+    @Column(name = "campaign_state_checklist")
+    private String campaignStateChecklist;
 }

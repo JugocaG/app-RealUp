@@ -79,7 +79,8 @@ public class CampaignController {
 
     @PutMapping("update-campaign-state/{idCampaign}")
     public ResponseEntity<?> updateCampaignState(@PathVariable Long idCampaign, @RequestParam Integer state) {
-        try {            campaignService.updateCampaignState(idCampaign, state);
+        try {
+            campaignService.updateCampaignState(idCampaign, state);
             return ResponseEntity.ok().body("Checklist updated successfully");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error updating checklist: " + e.getMessage());
@@ -91,5 +92,13 @@ public class CampaignController {
         return campaignService.getCampaignNamesByNameOp(nameOp);
     }
 
-
+    @PutMapping("update-campaign-color")
+    public ResponseEntity<?> updateColorCampaign(@RequestBody CampaignDTO campaignDTO) {
+        try {
+            campaignService.updateColorCampaign(campaignDTO);
+            return ResponseEntity.ok().body("Checklist updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating checklist: " + e.getMessage());
+        }
+    }
 }

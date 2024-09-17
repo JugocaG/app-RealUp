@@ -31,7 +31,7 @@ public class DailyTask {
     private String titleTask;
 
     @Column(name = "name_campaign")
-        private  String nameCampaign;
+    private  String nameCampaign;
 
     @Column(name = "date_task")
     private ZonedDateTime dateTask;
