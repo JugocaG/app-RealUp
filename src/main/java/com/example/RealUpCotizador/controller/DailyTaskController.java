@@ -1,6 +1,7 @@
 package com.example.RealUpCotizador.controller;
 
 import com.example.RealUpCotizador.db.DailyTask;
+import com.example.RealUpCotizador.dto.CampaignDTO;
 import com.example.RealUpCotizador.dto.DailyTaskDTO;
 import com.example.RealUpCotizador.service.DailyTaskService;
 import lombok.AllArgsConstructor;
@@ -59,6 +60,16 @@ public class DailyTaskController {
     public ResponseEntity<String> updateDailyTasks(@RequestBody List<DailyTaskDTO> dailyTaskDTOs) {
         dailyTaskService.updateDailyTasks(dailyTaskDTOs);
         return ResponseEntity.ok("Tareas actualizadas con éxito");
+    }
+
+    @PutMapping("update-time-task")
+    public ResponseEntity<?> updateColorCampaign(@RequestBody DailyTaskDTO dailyTaskDTO) {
+        try {
+            dailyTaskService.updateTimeTask(dailyTaskDTO);
+            return ResponseEntity.ok().body("Checklist updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating checklist: " + e.getMessage());
+        }
     }
 
 }

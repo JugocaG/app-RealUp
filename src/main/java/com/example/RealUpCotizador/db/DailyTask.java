@@ -36,4 +36,7 @@ public class DailyTask {
     @Column(name = "date_task")
     private ZonedDateTime dateTask;
 
+    @Column(name = "date_with_timezone")
+    private ZonedDateTime timeTask;
+
 }

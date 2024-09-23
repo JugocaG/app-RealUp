@@ -40,7 +40,8 @@ public class CampaignService {
         campaign.setCampaign_state(CampaignState.APPROVAL);
         createUpdateCampaign(campaignDTO, campaign);
         campaign.setCampaignStateChecklist(INITIAL_COLOR);
-
+        campaign.setClient(campaignDTO.getClient());
+        campaign.setBrand(campaignDTO.getBrand());
         taskCompletedService.addTaskCompleted(campaignRepository.getLastValueOfCampaignSequence());
 
         campaignRepository.save(campaign);
@@ -57,6 +58,8 @@ public class CampaignService {
         campaign.setName_op(campaignDTO.getName_op());
         campaign.setNumber_contents(campaignDTO.getNumber_contents());
         campaign.setNumber_creators(campaignDTO.getNumber_creators());
+        campaign.setBrand(campaignDTO.getBrand());
+        campaign.setClient(campaignDTO.getClient());
         createUpdateCampaign(campaignDTO, campaign);
 
         campaignRepository.save(campaign);
@@ -176,5 +179,7 @@ public class CampaignService {
             throw new RuntimeException("Campaign with id " + campaignDTO.getId() + " not found");
         }
     }
+
+
 
 }

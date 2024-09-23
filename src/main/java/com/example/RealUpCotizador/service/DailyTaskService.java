@@ -1,7 +1,9 @@
 package com.example.RealUpCotizador.service;
 
+import com.example.RealUpCotizador.db.Campaign;
 import com.example.RealUpCotizador.db.DailyTask;
 import com.example.RealUpCotizador.db.DailyTaskRepository;
+import com.example.RealUpCotizador.dto.CampaignDTO;
 import com.example.RealUpCotizador.dto.DailyTaskDTO;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -98,6 +100,18 @@ public class DailyTaskService {
 
             // Guardar la entidad actualizada
             dailyTaskRepository.save(dailyTaskEntity);
+        }
+    }
+
+    public void updateTimeTask(DailyTaskDTO dailyTaskDTO){
+        Optional<DailyTask> dailyTaskOptional = dailyTaskRepository.findById(dailyTaskDTO.getId());
+        if (dailyTaskOptional.isPresent()) {
+            DailyTask dailyTask = dailyTaskOptional.get();
+            dailyTask.setTimeTask(dailyTaskDTO.getTimeTask());
+            dailyTaskRepository.save(dailyTask);
+        } else {
+            // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción
+            throw new RuntimeException("Campaign with id " + dailyTaskDTO.getId() + " not found");
         }
     }
 
