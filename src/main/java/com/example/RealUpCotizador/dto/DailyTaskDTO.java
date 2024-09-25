@@ -22,8 +22,10 @@ public class DailyTaskDTO {
 
     private ZonedDateTime dateTask;
 
-    private  String NameCampaign;
+    private String NameCampaign;
 
     private ZonedDateTime timeTask;
+
+    private String dailyStateChecklist;
 
 }

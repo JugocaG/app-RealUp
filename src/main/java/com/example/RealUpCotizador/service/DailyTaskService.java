@@ -20,6 +20,8 @@ import java.util.Optional;
 @Service
 public class DailyTaskService {
 
+    final private String INITIAL_COLOR = "#D0D2D5";
+
     DailyTaskRepository dailyTaskRepository;
 
     public List<DailyTask> seeDailyTask(){
@@ -38,6 +40,7 @@ public class DailyTaskService {
         dailyTask.setDateTask(currentDateTime);
         dailyTask.setNameCampaign(dailyTaskDTO.getNameCampaign());
         dailyTask.setOrder_task(0);
+        dailyTask.setDailyStateChecklist(INITIAL_COLOR);
 
         dailyTaskRepository.save(dailyTask);
         return dailyTask;
@@ -108,6 +111,18 @@ public class DailyTaskService {
         if (dailyTaskOptional.isPresent()) {
             DailyTask dailyTask = dailyTaskOptional.get();
             dailyTask.setTimeTask(dailyTaskDTO.getTimeTask());
+            dailyTaskRepository.save(dailyTask);
+        } else {
+            // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción
+            throw new RuntimeException("Campaign with id " + dailyTaskDTO.getId() + " not found");
+        }
+    }
+
+    public void updateColorDaily(DailyTaskDTO dailyTaskDTO){
+        Optional<DailyTask> dailyTaskOptional = dailyTaskRepository.findById(dailyTaskDTO.getId());
+        if (dailyTaskOptional.isPresent()) {
+            DailyTask dailyTask = dailyTaskOptional.get();
+            dailyTask.setDailyStateChecklist(dailyTaskDTO.getDailyStateChecklist());
             dailyTaskRepository.save(dailyTask);
         } else {
             // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción

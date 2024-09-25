@@ -39,4 +39,7 @@ public class DailyTask {
     @Column(name = "date_with_timezone")
     private ZonedDateTime timeTask;
 
+    @Column(name = "daily_state_checklist")
+    private String dailyStateChecklist;
+
 }
