@@ -101,4 +101,9 @@ public class CampaignController {
             return ResponseEntity.status(500).body("Error updating checklist: " + e.getMessage());
         }
     }
+
+    @GetMapping("get-campaign-by-id/{idCampaign}")
+    public Campaign getCampaignById(@PathVariable Long idCampaign){
+        return campaignService.getCampaignById(idCampaign);
+    }
 }

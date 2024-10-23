@@ -32,6 +32,15 @@ public class TaskCompletedService {
     public TaskCompleted addTaskCompleted(Long idCampaign){
         TaskCompleted taskCompleted = new TaskCompleted();
         taskCompleted.setIdCampaign(idCampaign);
+
+        taskCompleted.setLink_task_2("");
+        taskCompleted.setLink_task_4("");
+        taskCompleted.setLink_task_5("");
+        taskCompleted.setLink_task_7("");
+        taskCompleted.setLink_task_9("");
+        taskCompleted.setLink_task_16("");
+        taskCompleted.setLink_task_18("");
+
         taskCompleted.setTask_1(false);
         taskCompleted.setTask_2(false);
         taskCompleted.setTask_3(false);

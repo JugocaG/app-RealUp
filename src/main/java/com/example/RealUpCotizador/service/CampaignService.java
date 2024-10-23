@@ -8,6 +8,7 @@ import com.example.RealUpCotizador.vo.CampaignState;
 import com.example.RealUpCotizador.vo.CampaignType;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.aspectj.weaver.loadtime.Options;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -177,6 +178,19 @@ public class CampaignService {
         } else {
             // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción
             throw new RuntimeException("Campaign with id " + campaignDTO.getId() + " not found");
+        }
+    }
+
+
+    public Campaign getCampaignById(Long idCampaign){
+        Optional<Campaign> campaignOptional = campaignRepository.findById(idCampaign);
+
+        if (campaignOptional.isPresent()) {
+            Campaign campaign = campaignOptional.get();
+            return campaign;
+        } else {
+            // Manejar el caso en que la campaña no se encuentra, por ejemplo, lanzando una excepción
+            throw new RuntimeException("Campaign with id " + idCampaign + " not found");
         }
     }
 
