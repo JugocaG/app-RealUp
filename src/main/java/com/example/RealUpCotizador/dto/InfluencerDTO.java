@@ -1,13 +1,15 @@
 package com.example.RealUpCotizador.dto;
 
+import com.example.RealUpCotizador.db.dataInfluencer.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
 public class InfluencerDTO {
-    private Long id;
-
     private String country;
 
     private String city;
@@ -18,21 +20,15 @@ public class InfluencerDTO {
 
     private String name;
 
-    private String username;
+    private List<UrlPhoto> urlPhoto;
 
-    private String urlInstagram;
+    private List<UsernameInfluencer> usernameInfluencer;
 
-    private String urlTiktok;
+    private List<UrlSocialMedia> urlSocialMedia;
 
-    private String urlYoutube;
+    private List<Followers> followers;
 
-    private Integer followersInstagram;
-
-    private Integer followersTiktok;
-
-    private Integer followersYoutube;
-
-    private Integer followersTotal;
+    private List<PriceActions> priceInfluencer;
 
     private String contentCategories;
 
@@ -44,15 +40,15 @@ public class InfluencerDTO {
 
     private String languages;
 
-    private Double engagementRate;
+    private List<EngagementRate> engagementRate;
 
-    private Double audienceMalePercentage;
+    private List<AudienceGender> audienceMale;
 
-    private Double audienceFemalePercentage;
+    private List<AudienceGender> audienceFemale;
 
-    private String top1AudienceCity;
+    private Map<String, List<TopAudienceLocation>> topAudienceCity;
 
-    private String top1AudienceCountry;
+    private Map<String, List<TopAudienceLocation>> topAudienceCountry;
 
     private Boolean ugc;
 

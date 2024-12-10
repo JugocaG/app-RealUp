@@ -1,7 +1,13 @@
 package com.example.RealUpCotizador.db;
 
+import com.example.RealUpCotizador.db.converter.*;
+import com.example.RealUpCotizador.db.dataInfluencer.*;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
+import java.util.Map;
+
 
 @Data
 @Entity
@@ -28,29 +34,25 @@ public class Influencer {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "url_photo", columnDefinition = "json")
+    @Convert(converter = UrlPhotoConverter.class)
+    private List<UrlPhoto> urlPhoto;
 
-    @Column(name = "url_instagram", columnDefinition = "TEXT")
-    private String urlInstagram;
+    @Column(name = "username_influencer", columnDefinition = "json")
+    @Convert(converter = UsernameInfluencerConverter.class)
+    private List<UsernameInfluencer> usernameInfluencer;
 
-    @Column(name = "url_tiktok", columnDefinition = "TEXT")
-    private String urlTiktok;
+    @Column(name = "url_social_media", columnDefinition = "json")
+    @Convert(converter = UrlSocialMediaConverter.class)
+    private List<UrlSocialMedia> urlSocialMedia;
 
-    @Column(name = "url_youtube", columnDefinition = "TEXT")
-    private String urlYoutube;
+    @Column(name = "followers", columnDefinition = "json")
+    @Convert(converter = FollowersConverter.class)
+    private List<Followers> followers;
 
-    @Column(name = "followers_instagram")
-    private Integer followersInstagram;
-
-    @Column(name = "followers_tiktok")
-    private Integer followersTiktok;
-
-    @Column(name = "followers_youtube")
-    private Integer followersYoutube;
-
-    @Column(name = "followers_total")
-    private Integer followersTotal;
+    @Column(name = "price_influencer", columnDefinition = "json")
+    @Convert(converter = PriceActionsConverter.class)
+    private List<PriceActions> priceInfluencer;
 
     @Column(name = "content_categories")
     private String contentCategories;
@@ -67,20 +69,27 @@ public class Influencer {
     @Column(name = "languages")
     private String languages;
 
-    @Column(name = "engagement_rate")
-    private Double engagementRate;
+    @Column(name = "engagement_rate", columnDefinition = "json")
+    @Convert(converter = EngagementRateConverter.class)
+    private List<EngagementRate> engagementRate;
 
-    @Column(name = "audience_male_percentage")
-    private Double audienceMalePercentage;
+    @Column(name = "audience_male", columnDefinition = "json")
+    @Convert(converter = AudienceGenderConverter.class)
+    private List<AudienceGender> audienceMale;
 
-    @Column(name = "audience_female_percentage")
-    private Double audienceFemalePercentage;
+    @Column(name = "audience_female", columnDefinition = "json")
+    @Convert(converter = AudienceGenderConverter.class)
+    private List<AudienceGender> audienceFemale;
 
-    @Column(name = "top1_audience_city")
-    private String top1AudienceCity;
 
-    @Column(name = "top1_audience_country")
-    private String top1AudienceCountry;
+    @Column(name = "top_audience_city", columnDefinition = "json")
+    @Convert(converter = TopAudienceLocationConverter.class)
+    private Map<String, List<TopAudienceLocation>> topAudienceCity;
+
+
+    @Column(name = "top_audience_country", columnDefinition = "json")
+    @Convert(converter = TopAudienceLocationConverter.class)
+    private Map<String, List<TopAudienceLocation>> topAudienceCountry;
 
     @Column(name = "ugc", columnDefinition = "BOOLEAN")
     private Boolean ugc;
@@ -91,3 +100,4 @@ public class Influencer {
     @Column(name = "team_experience_rating")
     private Integer teamExperienceRating;
 }
+
