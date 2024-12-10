@@ -37,7 +37,7 @@ public class InfluencerService {
 //    }
 
     public List<Influencer> seeInfluencer() {
-        return influencerRepository.findTop45ByInstagramFollowers();
+        return influencerRepository.findAll();
     }
     public String getSQLFromPrompt(String prompt) {
         // Llama al microservicio Python
