@@ -40,7 +40,7 @@ public class Influencer {
 
     @Column(name = "username_influencer", columnDefinition = "json")
     @Convert(converter = UsernameInfluencerConverter.class)
-    private List<UsernameInfluencer> usernameInfluencer;
+        private List<UsernameInfluencer> usernameInfluencer;
 
     @Column(name = "url_social_media", columnDefinition = "json")
     @Convert(converter = UrlSocialMediaConverter.class)

@@ -30,15 +30,15 @@ public class InfluencerService {
 
     private final String pythonServiceUrl = "https://database-realup.onrender.com/generate-sql";
 
-//    public List<Influencer> seeInfluencer() {
-//        Pageable pageable = PageRequest.of(0, 45); // Página 0, 45 registros por página
-//        Page<Influencer> page = influencerRepository.findAll(pageable);
-//        return page.getContent(); // Extraer solo la lista de registros
-//    }
-
     public List<Influencer> seeInfluencer() {
-        return influencerRepository.findAll();
+        Pageable pageable = PageRequest.of(0, 30); // Página 0, 45 registros por página
+        Page<Influencer> page = influencerRepository.findAll(pageable);
+        return page.getContent(); // Extraer solo la lista de registros
     }
+
+//    public List<Influencer> seeInfluencer() {
+//        return influencerRepository.findAll();
+//    }
     public String getSQLFromPrompt(String prompt) {
         // Llama al microservicio Python
         RestTemplate restTemplate = new RestTemplate();
@@ -81,7 +81,7 @@ public class InfluencerService {
                 // Manejar deserialización específica para cada campo
                 switch (camelCaseKey) {
                     case "urlPhoto":
-                    case "usernameInfluencers":
+                    case "usernameInfluencer":
                     case "urlSocialMedia":
                     case "followers":
                     case "priceInfluencer":
