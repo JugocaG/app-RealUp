@@ -28,7 +28,7 @@ public class InfluencerService {
 
     private final InfluencerMapper influencerMapper;
 
-    private final String pythonServiceUrl = "https://database-realup.onrender.com/generate-sql";
+    private final String pythonServiceUrl = "https://xkb3lol4yfrxrabci2hhszjcpa0oepdx.lambda-url.us-east-1.on.aws";
 
     public List<Influencer> seeInfluencer() {
         Pageable pageable = PageRequest.of(0, 30); // Página 0, 45 registros por página
